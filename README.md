@@ -6,6 +6,8 @@ LegalAssist AI is a polished, functional, evaluator-friendly GenAI prototype bui
 
 ---
 
+live url :
+
 ## ⚖️ Legal Boundary Notice
 
 > **LEGAL INFORMATION NOTICE:**  
@@ -15,14 +17,6 @@ LegalAssist AI is a polished, functional, evaluator-friendly GenAI prototype bui
 > - Users should **always consult a qualified legal professional** for case-specific advice or formal representation.
 
 ---
-
-## 🌟 Hack2Skill Project Description
-
-### Problem Statement
-Legal information can be complex, dense, and difficult to navigate without professional assistance. Non-lawyers often struggle to identify unbalanced clauses, ambiguous notice deadlines, asymmetric termination penalties, and high-risk liability provisions.
-
-### Solution
-LegalAssist AI uses Google Gemini (`gemini-1.5-flash`) to transform dense legal contracts into plain-language summaries, extract key obligations and dates, answer grounded document queries with direct evidence citations, perform side-by-side contract comparisons, and generate consultation preparation briefs for legal professionals.
 
 ---
 
@@ -54,41 +48,8 @@ User (React UI) -> Secure API Route (/api/*) -> Validation & Prompt Wrapping -> 
 - **Contract Comparison:** Detecting material differences between Document A and Document B.
 - **Brief Generation:** Structuring preparation briefs for legal consultations.
 
----
 
-## 🛡️ Security & Privacy Architecture
 
-- **Server-Side API Key Isolation:** `GEMINI_API_KEY` is accessed strictly in `process.env` on server-side endpoints (`/api/*`). Secrets are **never** exposed to client-side JS.
-- **Prompt Injection Defense:** External file text is encapsulated inside XML structural tags with strict instructions to ignore embedded commands.
-- **File Validation & In-Memory Processing:** Capped at 10 MB. Files are processed transiently in-memory without persistent disk logging.
-
----
-
-## ♿ Accessibility (WCAG 2.2 AA)
-
-- **Accessibility Center Modal:** Toggle High Contrast mode, adjust text scaling (Normal, Large, X-Large), and enable Reduced Motion.
-- **Keyboard Navigation:** Full keyboard support (`Tab`, `Enter`, `Space`, `Escape` to close modals).
-- **Z-Index Layer Hierarchy:** Base `z-0`, Header `z-30`, Sidebar `z-40`, Modals `z-50`, Toast Alerts `z-60`.
-
----
-
-## 🧪 Testing
-
-Run the Vitest suite:
-```bash
-npm test
-```
-
-### Test Coverage Highlights:
-- File validation & 10 MB size limits ([`src/test/fileValidation.test.ts`](file:///c:/Users/user/Desktop/Pwar%20new/src/test/fileValidation.test.ts))
-- Prompt injection defense wrapping ([`src/test/promptDefense.test.ts`](file:///c:/Users/user/Desktop/Pwar%20new/src/test/promptDefense.test.ts))
-- AI response JSON schema recovery ([`src/test/aiParser.test.ts`](file:///c:/Users/user/Desktop/Pwar%20new/src/test/aiParser.test.ts))
-- Grounded Q&A & unanswerable fallbacks ([`src/test/groundedQA.test.ts`](file:///c:/Users/user/Desktop/Pwar%20new/src/test/groundedQA.test.ts))
-- API route security & method validation ([`src/test/apiSecurity.test.ts`](file:///c:/Users/user/Desktop/Pwar%20new/src/test/apiSecurity.test.ts))
-- Accessibility modal controls & keyboard Escape listeners ([`src/test/components/AccessibilityModal.test.tsx`](file:///c:/Users/user/Desktop/Pwar%20new/src/test/components/AccessibilityModal.test.tsx))
-- Grounded Q&A suggested prompt pills ([`src/test/components/GroundedAskView.test.tsx`](file:///c:/Users/user/Desktop/Pwar%20new/src/test/components/GroundedAskView.test.tsx))
-
----
 
 ## 💻 Local Setup Instructions
 
@@ -120,42 +81,3 @@ npm test
    Open `http://localhost:3000` in your browser.
 
 ---
-
-## 🎬 Evaluator Demo Flow
-
-1. Open the application dashboard at `http://localhost:3000`.
-2. Click **"Try Demo Document"** to load the pre-populated fictional *Master Services Agreement*.
-3. Inspect the **Document Analyzer** overview (summary, parties, dates, obligations, risk clauses).
-4. Navigate to **Ask Your Document** and ask: *"What are the termination conditions?"* Observe the grounded evidence quotation and clause source.
-5. Navigate to **Compare Documents** to view side-by-side material differences.
-6. Click **Accessibility** in the top header to test High Contrast mode and Text Scaling.
-
----
-
-## 📌 Remaining Known Limitations & Notes
-
-### 1. Gemini API Fallback
-If `GEMINI_API_KEY` is not configured in the `.env` file, LegalAssist AI automatically switches to a structured heuristic fallback engine.
-
-This allows evaluators to explore and test the core application workflow without requiring an external API key.
-
-> **Important:** The fallback engine is a development/demo fallback and should not be interpreted as equivalent to Gemini-powered analysis.
-
-When the Gemini API is configured, AI-powered analysis, document Q&A, comparison, and other GenAI features use the configured Gemini integration.
-
-### 2. DOCX Extraction
-DOCX documents are processed using `mammoth` for text extraction.
-
-Complex DOCX files containing embedded images, drawings, charts, or highly specialized formatting may not preserve all visual/layout information during extraction.
-
-The current implementation primarily focuses on extracting textual content.
-
-### 3. Scanned PDF Documents
-Scanned PDFs containing images of text require OCR preprocessing before they can be reliably analyzed.
-
-Text-based PDFs are supported directly, while image-only/scanned documents may require OCR before upload.
-
-### 4. Legal Information Disclaimer
-LegalAssist AI provides informational assistance and document-understanding features. It does not provide professional legal advice or replace a qualified legal professional.
-
-AI-generated results may contain inaccuracies and should be independently verified, particularly for legally significant decisions.
