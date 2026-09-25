@@ -6,7 +6,7 @@ LegalAssist AI is a polished, functional, evaluator-friendly GenAI prototype bui
 
 ---
 
-live url : https://legal-assist-ai-yuzk-7zmmowxzn-sushmitadubey2502-2255s-projects.vercel.app/
+live url : [ https://legal-assist-ai-yuzk-js3frz3gf-sushmitadubey2502-2255s-projects.vercel.app/ ]
 
 ## ⚖️ Legal Boundary Notice
 
